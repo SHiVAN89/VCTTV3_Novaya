@@ -11,11 +11,11 @@ class Post extends Model
     use Sluggable;
     public function tags()
     {
-        return $this-> belongsToMany(Tag::class);
+        return $this->belongsToMany(Tag::class);
     }
     public function category()
     {
-        return $this-> belongTo(Category::class);
+        return $this->belongTo(Category::class);
     }
 
 

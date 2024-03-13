@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Category;
 use App\Http\Controllers\Controller;
+use App\Models\Category as ModelsCategory;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -21,7 +23,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
@@ -29,7 +31,11 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+        ]);
+        Category::create($request->all());
+        return redirect()->route('categories.index')->with('success', 'Категория добавлена');
     }
 
     /**
@@ -43,9 +49,9 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+       dd(__METHOD__);
     }
 
     /**
@@ -59,8 +65,8 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        dd(__METHOD__);
     }
 }
